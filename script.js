@@ -1,4 +1,6 @@
 const word_el = document.getElementById('word');
+const popup = document.getElementById('popup-container');
+const massage = document.getElementById('success-message')
 function getRandomWord(){
     const words = ["javascript", "java", "python"];
     return words[Math.floor(Math.random() * words.length)]
@@ -17,7 +19,8 @@ function displayWord(){
 
     const w = word_el.innerText.replace(/\n/g,'')
     if(w === selectedWord) {
-        console.log(`you know!!`)
+        popup.style.display = 'flex';
+        message_el.innerText = 'Congratulations you won'
     }
 }
 
