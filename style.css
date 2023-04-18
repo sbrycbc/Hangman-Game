@@ -23,6 +23,7 @@ body{
 }
 .item{
     display: none;
+    stroke: red;
 }
 #wrong-letters{
     position: absolute;
