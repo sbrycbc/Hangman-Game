@@ -6,11 +6,11 @@ function getRandomWord(){
     return words[Math.floor(Math.random() * words.length)]
 }
 
-const correctLetters = ['j','a'];
+const correctLetters = [];
 const wrongLetters = [];
-function displayWord(){
-    const selectedWord = getRandomWord()
+const selectedWord = getRandomWord();
 
+function displayWord(){
     word_el.innerHTML = `
     ${selectedWord.split('').map(letter => `
     <div class="letter">
@@ -23,6 +23,28 @@ function displayWord(){
         message_el.innerText = 'Congratulations you won'
     }
 }
+
+window.addEventListener('keydown', function(e){
+    if ( e.keyCode >=65 && e.keyCode <=90){
+        const letter = e.key;
+
+        if (selectedWord.includes(letter)){
+            if (!correctLetters.includes(letter)){
+                correctLetters.push(letter);
+                displayWord();
+            }else{
+                console.log('you have already added this letter!!');
+            }
+        
+        }else{
+            if(!wrongLetters.includes(letter)){
+                wrongLetters.push(letter);
+                console.log('update wrong letters!!')
+            }
+        }
+    }
+   
+})
 
 displayWord()
 
