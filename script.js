@@ -1,8 +1,9 @@
 const word_el = document.getElementById('word');
 const popup = document.getElementById('popup-container');
-const massage = document.getElementById('success-message');
+const message_el = document.getElementById('success-message');
 const wrongLetters_el = document.getElementById('wrong-letters');
-const items = document.querySelectorAll('.item')
+const items = document.querySelectorAll('.item');
+const message = document.getElementById('message');
 
 function getRandomWord(){
     const words = ["javascript", "java", "python"];
@@ -41,7 +42,20 @@ function updateWrongLetters(){
         } else {
             item.style.display = 'none';
         }
-    })
+    }) 
+
+    if(wrongLetters.length === items.length) {
+        popup.style.display = 'flex';
+        message_el.innerText = 'Unfortunately you lost!!';
+    }
+}
+
+function displayMessage(){
+    message.classList.add('show');
+    setTimeout(function(){
+        message.classList.remove('show');
+    },2000)
+
 }
 
 window.addEventListener('keydown', function(e){
@@ -53,13 +67,16 @@ window.addEventListener('keydown', function(e){
                 correctLetters.push(letter);
                 displayWord();
             }else{
-                console.log('you have already added this letter!!');
+                displayMessage()
+               
             }
         
         }else{
             if(!wrongLetters.includes(letter)){
                 wrongLetters.push(letter);
                 updateWrongLetters()
+            }else{
+                displayMessage();
             }
         }
     }
