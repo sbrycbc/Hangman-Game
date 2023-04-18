@@ -4,15 +4,19 @@ const message_el = document.getElementById('success-message');
 const wrongLetters_el = document.getElementById('wrong-letters');
 const items = document.querySelectorAll('.item');
 const message = document.getElementById('message');
+const PlayAgainBtn = document.getElementById('play-again');
 
 function getRandomWord(){
-    const words = ["javascript", "java", "python"];
+    const words = ["javascript", "java", "python","everton", "liverpool", "swansea", "chelsea", "hull", "manchester-city", "newcastle-united",
+    "alien", "dirty-harry", "gladiator", "finding-nemo", "jaws",
+    "manchester", "milan", "madrid", "amsterdam", "prague"
+];
     return words[Math.floor(Math.random() * words.length)]
 }
 
 const correctLetters = [];
 const wrongLetters = [];
-const selectedWord = getRandomWord();
+let selectedWord = getRandomWord();
 
 function displayWord(){
     word_el.innerHTML = `
@@ -27,6 +31,8 @@ function displayWord(){
         message_el.innerText = 'Congratulations you won'
     }
 }
+
+
 
 function updateWrongLetters(){
     wrongLetters_el.innerHTML = `
@@ -46,7 +52,7 @@ function updateWrongLetters(){
 
     if(wrongLetters.length === items.length) {
         popup.style.display = 'flex';
-        message_el.innerText = 'Unfortunately you lost!!';
+        message_el.innerText = 'Game Over!!';
     }
 }
 
@@ -55,8 +61,18 @@ function displayMessage(){
     setTimeout(function(){
         message.classList.remove('show');
     },2000)
-
 }
+
+PlayAgainBtn.addEventListener('click', function() {
+    correctLetters.splice(0);
+    wrongLetters.splice(0);
+    
+    selectedWord = getRandomWord();
+    displayWord();
+    updateWrongLetters();
+
+    popup.style.display = 'none';
+});
 
 window.addEventListener('keydown', function(e){
     if ( e.keyCode >=65 && e.keyCode <=90){
