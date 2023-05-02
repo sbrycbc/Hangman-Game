@@ -6,4 +6,4 @@ This is a simple hangman game written in Javascript. To play, guess a letter by 
 
 Have fun!!
 
-[logo](./public/game.png)
+![logo](./public/game.png)
