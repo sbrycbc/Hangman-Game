@@ -6,6 +6,6 @@ This is a simple hangman game written in Javascript. To play, guess a letter by 
 
 Have fun!!
 
-visit [Hangman game](https://sbrycbc.github.io/Hangman-Game/) to play the game!
+Visit [Hangman game](https://sbrycbc.github.io/Hangman-Game/) to play the game!
 
 ![logo](./public/game.png)
